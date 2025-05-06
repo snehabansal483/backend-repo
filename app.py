@@ -61,6 +61,36 @@ def generate_with_gemini(prompt):
     except Exception as e:
         print(f"Error generating content: {str(e)}")
         return f"Error generating response: {str(e)}"
+        
+@app.route('/', methods=['GET'])
+def welcome():
+    return jsonify({
+        'message': 'Welcome to Interview Coach API',
+        'endpoints': {
+            'generate_questions': {
+                'method': 'POST',
+                'url': '/generate-questions',
+                'parameters': {
+                    'job_role': 'string (required)',
+                    'company_name': 'string (optional)',
+                    'project': 'string (optional)',
+                    'experience_level': 'string (optional)'
+                }
+            },
+            'generate_answer': {
+                'method': 'POST',
+                'url': '/generate-answer',
+                'parameters': {
+                    'question': 'string (required)',
+                    'job_role': 'string (optional)',
+                    'company_name': 'string (optional)',
+                    'project': 'string (optional)',
+                    'context': 'string (optional)'
+                }
+            }
+        },
+        'status': 'active'
+    })        
 
 
 @app.route('/generate-questions', methods=['POST'])
