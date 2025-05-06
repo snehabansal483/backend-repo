@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+.env
+*.env
+secrets.json
+
+# Render
+.render/
+
+# IDE
+.vscode/
+.idea/
