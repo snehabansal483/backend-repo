@@ -24,10 +24,10 @@ def get_generative_model():
         
         # Preferred model names in order of preference
         model_preferences = [
+            'models/gemini-2.0-flash',
             'models/gemini-1.5-pro-latest',
             'models/gemini-pro',
-            'gemini-pro',
-            'gemini-1.0-pro'
+            'gemini-pro'
         ]
         
         # Check which preferred model is available
