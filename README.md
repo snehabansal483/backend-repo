@@ -1,6 +1,6 @@
 # Interview Coach API
 
-![Interview Coach Banner](./Screenshots/AI%20Interview%20Coach.png)
+![Interview Coach Banner](https://github.com/snehabansal483/backend-repo/blob/main/Screenshots/Ai%20Interview%20Coach.png)
 
 A Flask-based backend API that generates interview questions and answers using Google's Gemini AI, tailored to specific job roles, companies, and candidate backgrounds.
 
@@ -129,9 +129,11 @@ curl -X POST http://localhost:5000/generate-answer   -H "Content-Type: applicati
 
 ## Project Structure
 ```
-snehabansal483-backend-repo/
-├── app.py            # Main application file
-└── requirements.txt  # Python dependencies
+ snehabansal483-backend-repo/
+    ├── README.md             # Readme file
+    ├── app.py                # Main application file
+    ├── requirements.txt      # Python dependencies
+    └── Screenshots/          # Application screenshots 
 ```
 
 ## Contributing
