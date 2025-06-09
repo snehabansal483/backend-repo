@@ -1,6 +1,6 @@
 # Interview Coach API
 
-![Interview Coach Banner]() 
+![Interview Coach Banner](./Screenshots/AI%20Interview%20Coach.png)
 
 A Flask-based backend API that generates interview questions and answers using Google's Gemini AI, tailored to specific job roles, companies, and candidate backgrounds.
 
