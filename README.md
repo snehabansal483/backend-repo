@@ -2,6 +2,15 @@
 
 ![Interview Coach Banner](https://github.com/snehabansal483/backend-repo/blob/main/Screenshots/Ai%20Interview%20Coach.png)
 
+## 🔗 Related Repository
+
+This backend API works seamlessly with the frontend application available at:  
+👉 [snehabansal483/frontend-repo](https://github.com/snehabansal483/frontend-repo)
+
+The frontend is a Streamlit-based web interface that interacts with this Flask backend to deliver a complete interview preparation experience.
+
+## Overview
+
 A Flask-based backend API that generates interview questions and answers using Google's Gemini AI, tailored to specific job roles, companies, and candidate backgrounds.
 
 ## Features
