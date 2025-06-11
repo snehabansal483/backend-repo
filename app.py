@@ -61,6 +61,10 @@ def generate_with_gemini(prompt):
     except Exception as e:
         print(f"Error generating content: {str(e)}")
         return f"Error generating response: {str(e)}"
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "ok"}), 200
+        
         
 @app.route('/', methods=['GET'])
 def welcome():
