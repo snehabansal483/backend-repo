@@ -110,24 +110,51 @@ def generate_questions():
             return jsonify({'error': 'Job role is required'}), 400
         
         prompt = f"""
-        You are an expert interview coach. Generate 5 common interview questions for a {experience_level} 
-        {job_role} position at {company_name}. The candidate has experience with {project}.
-        
-        Make sure the questions are:
-        1. Relevant to {company_name}'s likely needs
-        2. Tailored to the {job_role} position
-        3. Cover technical skills, behavioral situations, and problem-solving
-        4. Consider the candidate's background in {project}
-        
-        Format the questions as a numbered list with one question per line.
+        Generate exactly 5 interview questions for a {experience_level} {job_role} position at {company_name}.
+        The candidate has experience with {project}.
+
+        Requirements:
+        1. Generate exactly 5 questions - no more, no less
+        2. Questions should be numbered from 1 to 5
+        3. Each question must be on a separate line
+        4. Include a mix of:
+           - Technical questions specific to {job_role}
+           - Behavioral/situational questions
+           - Problem-solving scenarios
+        5. Tailor questions to {company_name}'s likely needs
+        6. Consider the candidate's background in {project}
+
+        Format strictly like this:
+        1. First question?
+        2. Second question?
+        3. Third question?
+        4. Fourth question?
+        5. Fifth question?
+
+        Do not include any additional text or explanations.
         """
         
-        questions = generate_with_gemini(prompt)
-        return jsonify({'questions': questions})
+        response = generate_with_gemini(prompt)
+        
+        # Process the response to extract exactly 5 questions
+        questions = []
+        for line in response.split('\n'):
+            line = line.strip()
+            if line and line[0].isdigit():  # Only take numbered lines
+                question = ' '.join(line.split()[1:])  # Remove the number
+                questions.append(question)
+                if len(questions) == 5:
+                    break
+        
+        # If we didn't get 5 questions, fill the rest with placeholders
+        while len(questions) < 5:
+            questions.append("Could not generate this question")
+        
+        return jsonify({'questions': questions[:5]})  # Ensure exactly 5
         
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
+        
 @app.route('/generate-answer', methods=['POST'])
 def generate_answer():
     try:
